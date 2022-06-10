@@ -22,7 +22,7 @@ const App = () => {
   }
 
 //fetching data on mount
-  //useEffect(()=>{
+  useEffect(()=>{
     //handling url
     setDate(new Date().toISOString().slice(0,10))
     console.log(`date is : ${date}`)
@@ -39,7 +39,7 @@ const App = () => {
 
     FetchData(url)
     
-  //},[])
+  },[])
 
   //template return
   return (
