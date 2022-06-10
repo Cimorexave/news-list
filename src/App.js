@@ -1,18 +1,43 @@
-import { type } from '@testing-library/user-event/dist/type';
 import React, {useEffect, useState} from 'react';
 
 const App = () => {
-  //api key
-  const apiToken = '8c522ab951da88162a3e3a27b39424ab'
+  
+    //date 
+    const date = new Date().toISOString().slice(0,10)
+    //api key
+    const apiToken = '8c522ab951da88162a3e3a27b39424ab'
+  
   //states
-  const [keyword, setKeyword] = useState('')
-  const [url, setUrl] = useState('')
-  const [date, setDate] = useState('')
-  const [data , setData] = useState({})
-  //fetching data function 
+  const [items, setItems] = useState({})
+  const [url, setUrl] = useState("")
+
+  useEffect(()=>{
+    console.log('mounted, creating url...')
+
+      setUrl(
+      `https://gnews.io/api/v4/top-headlines?` +
+      `from=${date}&` +
+      `token=${apiToken}`
+      )
+    console.log('url created: ', url)
+    const fetchData = async(url) => {
+
+      console.log('fetching data from url')
+      const response = await fetch(url)
+      setItems(await response.json())
+      console.log('items are: ', items)
+    }
+    if (url) fetchData(url)
+  },[])
+
+
+
+
+
+  /*
   const FetchData = async (url) => {
     try { 
-      console.log(url)
+      console.log('url: ', url)
       let response = await fetch(url)
       console.log('response is: ', response)
       let responseJson = await response.json()
@@ -28,6 +53,8 @@ const App = () => {
   useEffect(()=>{
     FetchData(url)
   }, [url])
+
+
 //fetching data on mount
   useEffect(()=>{
     //handling url
@@ -44,6 +71,11 @@ const App = () => {
     console.log(`URL is: `, url)
     
   },[])
+
+
+
+  */
+
 
   //template return
   return (
