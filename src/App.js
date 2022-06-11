@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Card from './components/Card';
 
 const apiToken = '8c522ab951da88162a3e3a27b39424ab'
 const App = () => {
@@ -40,7 +41,7 @@ const App = () => {
     }
     if (keyword != "" && date != "" && url != "") setUrlIsValid(true)
     if (urlIsValid) {
-      fetchData()
+      //fetchData()
       console.log( items)
     }
   },[url])
@@ -52,14 +53,22 @@ const App = () => {
       <h2>keyword is {keyword}</h2> {'\n'}
       <h2>url is {url}</h2> {'\n'}
       <h3>results found : {items.totalArticles}</h3> {'\n'}
+      <Card />
+      <Card />
+      <Card />
+      <Card />
       { 
-        
-          items.articles.map((article)=>{
-            return(
-              <p key={Math.random()*items.totalArticles}>A * </p>
-            )
-          })
-        
+      /*
+        items.articles.map((article)=>{
+          return(
+            <div key={Math.random()*items.totalArticles}>
+              <Card   
+                article = {article}
+              />
+            </div>
+          )
+        })
+        */
       }
        
     </div>
