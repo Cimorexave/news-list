@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Card from './components/Card';
+import './app.css';
 
 const apiToken = '8c522ab951da88162a3e3a27b39424ab'
 const App = () => {
@@ -53,10 +54,12 @@ const App = () => {
       <h2>keyword is {keyword}</h2> {'\n'}
       <h2>url is {url}</h2> {'\n'}
       <h3>results found : {items.totalArticles}</h3> {'\n'}
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <div className="articles-list">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
       { 
       /*
         items.articles.map((article)=>{

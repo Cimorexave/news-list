@@ -1,4 +1,5 @@
 import React from 'react'
+import './card.css'
 const articleExample = {
     "title": "Nick Leeder appointed as latest head of Google Ireland",
     "description": "Google has announced that Nick Leeder will replace Fionnuala Meehan as the head of its Irish operation starting in April.",
@@ -16,8 +17,8 @@ const Card = ({title, description, content, image, source}) => {
     <div className='card'>
         <img className='artilce-image' src={articleExample.image} alt='article image'/>
         <div className="text">
-            <h1>{articleExample.title}</h1>
-            <p>{articleExample.description}</p>
+            <h4 className='article-tite'>{articleExample.title}</h4>
+            <p className='article-description'>{articleExample.description}</p>
         </div>
     </div>
   )
