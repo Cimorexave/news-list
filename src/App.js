@@ -1,85 +1,68 @@
 import React, {useEffect, useState} from 'react';
 
+const apiToken = '8c522ab951da88162a3e3a27b39424ab'
 const App = () => {
-  
-    //date 
-    const date = new Date().toISOString().slice(0,10)
-    //api key
-    const apiToken = '8c522ab951da88162a3e3a27b39424ab'
-  
-  //states
-  const [items, setItems] = useState({})
+  const [date, setDate] = useState("")
+  const [keyword, setKeyword] = useState("")
   const [url, setUrl] = useState("")
+  const [items, setItems] = useState({articles: []})
+  const [urlIsValid, setUrlIsValid] = useState(false)
 
   useEffect(()=>{
-    console.log('mounted, creating url...')
-
-      setUrl(
-      `https://gnews.io/api/v4/top-headlines?` +
-      `from=${date}&` +
-      `token=${apiToken}`
+    console.log('useeffect fired *')
+    setDate(()=>{
+      return new Date().toISOString().slice(0,10)
+    })
+    setKeyword("Tech")
+    console.log(date, keyword)
+  },[])
+  useEffect(()=>{
+    console.log('change of keyword or date')
+    setUrl(()=>{
+      return(
+        `https://gnews.io/api/v4/search?` + 
+        `q=${keyword}&` +
+        `from=${date}&` + 
+        `token=${apiToken}`
       )
-    console.log('url created: ', url)
-    const fetchData = async(url) => {
+    })
+    console.log(url)
+  }, [keyword,date])
 
-      console.log('fetching data from url')
+  useEffect(()=>{
+
+    const fetchData = async () =>{
+      console.log('fetching data...')
       const response = await fetch(url)
-      setItems(await response.json())
-      console.log('items are: ', items)
+      if (response.ok) {
+        setItems(await response.json())
+      }
     }
-    if (url) fetchData(url)
-  },[])
-
-
-
-
-
-  /*
-  const FetchData = async (url) => {
-    try { 
-      console.log('url: ', url)
-      let response = await fetch(url)
-      console.log('response is: ', response)
-      let responseJson = await response.json()
-      console.log('responsJson is: ', responseJson)
-      setData(responseJson)
-      console.log('response json is: ', responseJson)
-      console.log('data is: ', data) 
-    } catch(error) {
-      console.log(`failed to fetch data; Error: ${error}`)
+    if (keyword != "" && date != "" && url != "") setUrlIsValid(true)
+    if (urlIsValid) {
+      fetchData()
+      console.log( items)
     }
-  }
-
-  useEffect(()=>{
-    FetchData(url)
-  }, [url])
-
-
-//fetching data on mount
-  useEffect(()=>{
-    //handling url
-    setDate(new Date().toISOString().slice(0,10))
-    console.log(`date is : ${date}`)
-    //setKeyword('Tech')
-    
-    setUrl(
-    `https://gnews.io/api/v4/top-headlines?` +
-    //`q=${keyword}&` +
-    `from=${date}&` +
-    `token=${apiToken}`
-    )
-    console.log(`URL is: `, url)
-    
-  },[])
-
-
-
-  */
-
+  },[url])
 
   //template return
   return (
-    <div>App</div>
+    <div>
+      <h2>date is {date}</h2> {'\n'}
+      <h2>keyword is {keyword}</h2> {'\n'}
+      <h2>url is {url}</h2> {'\n'}
+      <h3>results found : {items.totalArticles}</h3> {'\n'}
+      { 
+        
+          items.articles.map((article)=>{
+            return(
+              <p key={Math.random()*items.totalArticles}>A * </p>
+            )
+          })
+        
+      }
+       
+    </div>
   )
 }
 
