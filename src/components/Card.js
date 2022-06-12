@@ -1,5 +1,11 @@
 import React from 'react'
 import './card.css'
+import { Typography } from '@mui/material';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 const articleExample = {
     "title": "Nick Leeder appointed as latest head of Google Ireland",
     "description": "Google has announced that Nick Leeder will replace Fionnuala Meehan as the head of its Irish operation starting in April.",
@@ -17,8 +23,8 @@ const Card = ({title, description, content, image, source}) => {
     <div className='card'>
         <img className='artilce-image' src={articleExample.image} alt='article image'/>
         <div className="text">
-            <h4 className='article-tite'>{articleExample.title}</h4>
-            <p className='article-description'>{articleExample.description}</p>
+            <Typography variant='h4' style={{fontSize: 18}} >{articleExample.title}</Typography>
+            <Typography variant='body20' style={{fontSize: 12}}>{articleExample.description}</Typography>
         </div>
     </div>
   )

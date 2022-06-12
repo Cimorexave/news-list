@@ -1,6 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Card from './components/Card';
 import './app.css';
+import Header from './components/Header';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const apiToken = '8c522ab951da88162a3e3a27b39424ab'
 const App = () => {
@@ -50,10 +55,10 @@ const App = () => {
   //template return
   return (
     <div>
-      <h2>date is {date}</h2> {'\n'}
-      <h2>keyword is {keyword}</h2> {'\n'}
-      <h2>url is {url}</h2> {'\n'}
-      <h3>results found : {items.totalArticles}</h3> {'\n'}
+      <Header>
+        <h3>results found : {items.totalArticles}</h3> {'\n'}
+      </Header>
+      
       <div className="articles-list">
         <Card />
         <Card />
