@@ -42,7 +42,7 @@ const App = () => {
     }
     if (keyword != "" && date != "" && url != "") setUrlIsValid(true)
     if (urlIsValid) {
-      fetchData()
+      //fetchData()
       console.log( items)
     }
   },[url])
