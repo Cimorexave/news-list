@@ -57,7 +57,10 @@ const App = () => {
   return (
     <div className='app'>
       <div className="header">
-        <Header totalArticles= {items.totalArticles} />
+        <Header 
+        keyword
+        setKeyword
+        totalArticles= {items.totalArticles} />
       </div>
       
       <div className="articles-list">

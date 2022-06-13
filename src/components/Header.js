@@ -7,7 +7,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-const Header = ({totalArticles}) => {
+const Header = ({totalArticles, keyword, setKeyword}) => {
   return (
     <div>
       <div className="top-header-container">
@@ -23,6 +23,11 @@ const Header = ({totalArticles}) => {
                 <SearchIcon />
               </InputAdornment>
             ),
+          }}
+          value={keyword}
+          onChange={(e)=>{
+            setKeyword(e.target.value)
+            console.log( 'keyword is: ',keyword)
           }}
           />
            
