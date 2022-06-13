@@ -58,8 +58,8 @@ const App = () => {
     <div className='app'>
       <div className="header">
         <Header 
-        keyword
-        setKeyword
+        keyword = {keyword}
+        setKeyword = {setKeyword}
         totalArticles= {items.totalArticles} />
       </div>
       

@@ -11,16 +11,16 @@ const Header = ({totalArticles, keyword, setKeyword}) => {
   return (
     <div>
       <div className="top-header-container">
-        <Typography variant='h3' style={{fontSize: 23, fontWeight: 'bold'}}  > <h3>News List</h3> </Typography>
+        <Typography variant='h3' style={{fontSize: 26, fontWeight: 'bold'}}  > News List </Typography>
         <Box>
           <TextField sx={{
             width: 200, 
           }} variant='outlined' label='Search'
-          size='small' hiddenLabel 
+          size='small' hiddenLabel color='warning'
           InputProps={{
             endAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon color='warning' />
               </InputAdornment>
             ),
           }}
