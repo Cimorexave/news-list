@@ -6,6 +6,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 
 const apiToken = '8c522ab951da88162a3e3a27b39424ab'
 const App = () => {
@@ -55,10 +56,7 @@ const App = () => {
   //template return
   return (
     <div>
-      <Header>
-        <h3>results found : {items.totalArticles}</h3> {'\n'}
-      </Header>
-      
+      <Header totalArticles= {items.totalArticles} />
       <div className="articles-list">
         <Card />
         <Card />
@@ -78,7 +76,11 @@ const App = () => {
         })
         */
       }
-       
+      <BottomNavigation>
+        <BottomNavigationAction />
+        <BottomNavigationAction />
+        <BottomNavigationAction />
+      </BottomNavigation>
     </div>
   )
 }
