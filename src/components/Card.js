@@ -24,7 +24,7 @@ const Card = ({title, description, content, image, source}) => {
         <img className='artilce-image' src={articleExample.image} alt='article image'/>
         <div className="text">
             <Typography variant='h4' style={{fontSize: 18}} >{articleExample.title}</Typography>
-            <Typography variant='body20' style={{fontSize: 12}}>{articleExample.description}</Typography>
+            <Typography variant='body2' style={{fontSize: 12}}>{articleExample.description}</Typography>
         </div>
     </div>
   )
