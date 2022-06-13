@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import Card from './components/Card';
+import Link from '@mui/material/Link';
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 import './app.css';
 import Header from './components/Header';
 import '@fontsource/roboto/300.css';
@@ -7,6 +13,24 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { lineHeight } from '@mui/system';
+
+
+
+const articleExample = {
+  "title": "Nick Leeder appointed as latest head of Google Ireland",
+  "description": "Google has announced that Nick Leeder will replace Fionnuala Meehan as the head of its Irish operation starting in April.",
+  "content": "Google has announced that Nick Leeder will replace Fionnuala Meehan as the head of its Irish operation starting in April.\nWhile its staff continue to work from home in the midst of the coronavirus pandemic, Google Ireland will have a new person leadi... [1514 chars]",
+  "url": "https://www.siliconrepublic.com/companies/nick-leeder-google-ireland",
+  "image": "https://www.siliconrepublic.com/wp-content/uploads/2020/03/BOO_3353_2.jpg",
+  "publishedAt": "2020-03-23T13:58:53Z",
+  "source": {
+      "name": "Silicon Republic",
+      "url": "https://www.siliconrepublic.com/"
+  }
+}
+
+
 
 const apiToken = '8c522ab951da88162a3e3a27b39424ab'
 const App = () => {
@@ -64,19 +88,47 @@ const App = () => {
       </div>
       
       <div className="articles-list">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <Card sx={{padding: 2, backgroundColor: '#F2F2F2'}} >
+        <CardMedia 
+        sx={{borderRadius: 3}}
+        component='img'
+        image={articleExample.image}
+        alt='alternate image'
+        />
+        <CardContent sx={{paddingTop: 2, paddingBottom: 1, paddingRight: 0, paddingLeft: 0}} >
+          <Typography variant='h4' style={{fontSize: 18, fontWeight:'bold', marginBottom: 5}} >{articleExample.title}</Typography>
+          <Typography variant='body2' style={{fontSize: 12}}>{articleExample.description}</Typography>
+          <Typography variant='caption' sx={{fontSize: 8}} > source : {articleExample.source.name} @ 
+          <Link sx={{color: 'orange', lineHeight: '10%'}} href={articleExample.url} > {articleExample.url} </Link> </Typography>
+          <Typography variant='caption' sx={{fontSize: 8}} >  / Date : {articleExample.publishedAt} </Typography>
+        </CardContent>
+        <CardActions sx={{padding: 0}}>
+          <Button variant='contained' size='small' color='warning'  >Read More</Button>
+        </CardActions>
+      </Card>
+      <Card sx={{padding: 2, backgroundColor: '#F2F2F2'}} >
+        <CardMedia 
+        component='img'
+        image={articleExample.image}
+        alt='alternate image'
+        />
+        <CardContent>
+          <Typography variant='h4' style={{fontSize: 18, fontWeight:'bold', marginBottom: 5}} >{articleExample.title}</Typography>
+          <Typography variant='body2' style={{fontSize: 12}}>{articleExample.description}</Typography>
+          <Typography variant='caption' sx={{fonSize: 3}} > source : {articleExample.source.name} @ 
+          <Link sx={{color: 'orange'}} href={articleExample.source.url} > {articleExample.source.url} </Link></Typography>
+        </CardContent>
+        <CardActions sx={{padding: 0}}>
+          <Button variant='contained' size='small' color='warning'  >Read More</Button>
+        </CardActions>
+      </Card>
       </div>
       { 
       /*
         items.articles.map((article)=>{
           return(
-            <div key={Math.random()*items.totalArticles}>
-              <Card   
-                article = {article}
-              />
+            <div className="articles-list">
+              <Card />
             </div>
           )
         })

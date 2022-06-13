@@ -1,13 +1,14 @@
 .articles-list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 20px;
 }
 .header {
     height: max-content;
     padding: 7px;
     margin-bottom: 10px;
     background-color: #F2F2F2;
+    border-radius: 5px;
 }
 .app {
     padding: 0;
