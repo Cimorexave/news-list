@@ -1,5 +1,6 @@
 import React from 'react'
-import { TextField, Typography, Box, Breadcrumbs, Button } from '@mui/material';
+import './header.css'
+import { TextField, Typography, Box, Breadcrumbs, Button, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -9,15 +10,40 @@ import '@fontsource/roboto/700.css';
 const Header = ({totalArticles}) => {
   return (
     <div>
-        <Typography variant='h3' style={{fontSize: 23}} > Header </Typography>
+      <div className="top-header-container">
+        <Typography variant='h3' style={{fontSize: 23, fontWeight: 'bold'}}  > <h3>News List</h3> </Typography>
         <Box>
-          <TextField variant='outlined' label='Search'
-          color='secondary' helperText='search for keywords to see articles'
+          <TextField sx={{
+            width: 200, 
+          }} variant='outlined' label='Search'
+          size='small' hiddenLabel 
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
           />
-          <SearchIcon color='secondary'/> 
+           
         </Box>
+      </div>
+        <Typography variant='caption'  >
+          Saturday, August 20th
+        </Typography>
+        <Typography variant='h4' sx={{fontWeight: 'bold', marginTop: 2, marginBottom: 2 }} >
+          Welcome Back!
+        </Typography>
+        <div className="breadcrumbs-container">
+          <Breadcrumbs separator='/' sx={{marginBottom: 0.7}} >
+            <Button size='small' color='warning'  > Tech </Button>
+            <Button size='small' color='warning'  > Games </Button>
+            <Button size='small' color='warning'  > Politics </Button>
+          </Breadcrumbs>
+        </div>
+        
         <Typography variant='caption' >
-          Found results: : {totalArticles}
+          Results Found :  {totalArticles}
         </Typography>
     </div>
   )

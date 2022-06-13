@@ -55,8 +55,11 @@ const App = () => {
 
   //template return
   return (
-    <div>
-      <Header totalArticles= {items.totalArticles} />
+    <div className='app'>
+      <div className="header">
+        <Header totalArticles= {items.totalArticles} />
+      </div>
+      
       <div className="articles-list">
         <Card />
         <Card />
