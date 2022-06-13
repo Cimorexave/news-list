@@ -41,9 +41,9 @@ const Header = ({totalArticles, keyword, setKeyword}) => {
         </Typography>
         <div className="breadcrumbs-container">
           <Breadcrumbs separator='/' sx={{marginBottom: 0.7}} >
-            <Button size='small' color='warning'  > Tech </Button>
-            <Button size='small' color='warning'  > Games </Button>
-            <Button size='small' color='warning'  > Politics </Button>
+            <Button size='small' color='warning' onClick={()=>{setKeyword('tech')}} > Tech </Button>
+            <Button size='small' color='warning' onClick={()=>{setKeyword('games')}} > Games </Button>
+            <Button size='small' color='warning' onClick={()=>{setKeyword('politics')}} > Politics </Button>
           </Breadcrumbs>
         </div>
         
