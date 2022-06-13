@@ -86,72 +86,37 @@ const App = () => {
         setKeyword = {setKeyword}
         totalArticles= {items.totalArticles} />
       </div>
-      {/*
-      <div className="articles-list">
-      <Card sx={{padding: 2, backgroundColor: '#F2F2F2'}} >
-        <CardMedia 
-        sx={{borderRadius: 3}}
-        component='img'
-        image={articleExample.image}
-        alt='alternate image'
-        />
-        <CardContent sx={{paddingTop: 2, paddingBottom: 1, paddingRight: 0, paddingLeft: 0}} >
-          <Typography variant='h4' style={{fontSize: 18, fontWeight:'bold', marginBottom: 5}} >{articleExample.title}</Typography>
-          <Typography variant='body2' style={{fontSize: 12}}>{articleExample.description}</Typography>
-          <Typography variant='caption' sx={{fontSize: 8}} > source : {articleExample.source.name} @ 
-          <Link sx={{color: 'orange', lineHeight: '10%'}} href={articleExample.url} > {articleExample.url} </Link> </Typography>
-          <Typography variant='caption' sx={{fontSize: 8}} >  / Date : {articleExample.publishedAt} </Typography>
-        </CardContent>
-        <CardActions sx={{padding: 0}}>
-          <Button variant='contained' size='small' color='warning'  >Read More</Button>
-        </CardActions>
-      </Card>
-      <Card sx={{padding: 2, backgroundColor: '#F2F2F2'}} >
-        <CardMedia 
-        component='img'
-        image={articleExample.image}
-        alt='alternate image'
-        />
-        <CardContent>
-          <Typography variant='h4' style={{fontSize: 18, fontWeight:'bold', marginBottom: 5}} >{articleExample.title}</Typography>
-          <Typography variant='body2' style={{fontSize: 12}}>{articleExample.description}</Typography>
-          <Typography variant='caption' sx={{fonSize: 3}} > source : {articleExample.source.name} @ 
-          <Link sx={{color: 'orange'}} href={articleExample.source.url} > {articleExample.source.url} </Link></Typography>
-        </CardContent>
-        <CardActions sx={{padding: 0}}>
-          <Button variant='contained' size='small' color='warning'  >Read More</Button>
-        </CardActions>
-      </Card>
-      </div>
-      */}
+      <div className="articles-container">
       { 
       
-        items.articles.map((article)=>{
-          return(
-            <div key={Math.random()*items.articles.length} className="articles-list">
-              <Card  sx={{padding: 2, backgroundColor: '#F2F2F2'}} >
-        <CardMedia 
-        sx={{borderRadius: 3}}
-        component='img'
-        image={article.image}
-        alt='alternate image'
-        />
-        <CardContent sx={{paddingTop: 2, paddingBottom: 1, paddingRight: 0, paddingLeft: 0}} >
-          <Typography variant='h4' style={{fontSize: 18, fontWeight:'bold', marginBottom: 5}} >{article.title}</Typography>
-          <Typography variant='body2' style={{fontSize: 12}}>{article.description}</Typography>
-          <Typography variant='caption' sx={{fontSize: 8}} > source : {article.source.name} @ 
-          <Link sx={{color: 'orange', lineHeight: '10%'}} href={article.url} > {article.url} </Link> </Typography>
-          <Typography variant='caption' sx={{fontSize: 8}} >  / Date : {article.publishedAt} </Typography>
-        </CardContent>
-        <CardActions sx={{padding: 0}}>
-          <Button variant='contained' size='small' color='warning'  >Read More</Button>
-        </CardActions>
-      </Card>
-            </div>
-          )
-        })
-        
-      }
+      items.articles.map((article)=>{
+        return(
+          <div key={Math.random()*items.articles.length} className="articles-card">
+            <Card  sx={{padding: 2, backgroundColor: '#F2F2F2', height: '100%'}} >
+              <CardMedia 
+              sx={{borderRadius: 3}}
+              component='img'
+              image={article.image}
+              alt='alternate image'
+              />
+              <CardContent sx={{paddingTop: 2, paddingBottom: 1, paddingRight: 0, paddingLeft: 0}} >
+                <Typography variant='h4' style={{fontSize: 18, fontWeight:'bold', marginBottom: 5}} >{article.title}</Typography>
+                <Typography variant='body2' style={{fontSize: 12}}>{article.description}</Typography>
+                <Typography variant='caption' sx={{fontSize: 8}} > source : {article.source.name} @ 
+                <Link sx={{color: 'orange', lineHeight: '10%'}} href={article.url} > {article.url} </Link> </Typography>
+                <Typography variant='caption' sx={{fontSize: 8}} >  / Date : {article.publishedAt} </Typography>
+              </CardContent>
+              <CardActions sx={{padding: 0}}>
+                <Button variant='contained' size='small' color='warning'  >Read More</Button>
+              </CardActions>
+            </Card>
+          </div>
+        )
+      })
+      
+    }
+      </div>
+      
       <BottomNavigation>
         <BottomNavigationAction />
         <BottomNavigationAction />

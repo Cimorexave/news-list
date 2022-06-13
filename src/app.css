@@ -1,4 +1,4 @@
-.articles-list {
+.articles-card {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -14,4 +14,14 @@
 .app {
     padding: 0;
     margin: 0;
+}
+@media screen and (min-width: 769px) {
+    .articles-card {
+        display: inline-block;
+    }
+    .articles-container { 
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
 }
