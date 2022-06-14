@@ -6,7 +6,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
+var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+var today  = new Date();
 const Header = ({totalArticles, keyword, setKeyword}) => {
   return (
     <div>
@@ -34,7 +35,7 @@ const Header = ({totalArticles, keyword, setKeyword}) => {
         </Box>
       </div>
         <Typography variant='caption'  >
-          Saturday, August 20th
+          {today.toLocaleDateString("en-US", options)}
         </Typography>
         <Typography variant='h4' sx={{fontWeight: 'bold', marginTop: 2, marginBottom: 2 }} >
           Welcome Back!
