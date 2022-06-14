@@ -40,6 +40,7 @@ const App = () => {
   const [items, setItems] = useState({articles: []})
   const [urlIsValid, setUrlIsValid] = useState(false)
 
+
   useEffect(()=>{
     console.log('useeffect fired *')
     setDate(()=>{
@@ -107,10 +108,12 @@ const App = () => {
                 <Typography variant='caption' sx={{fontSize: 8}} >  / Date : {article.publishedAt} </Typography>
               </CardContent>
               <CardActions sx={{padding: 0}}>
-                <Button variant='contained' size='small' color='warning'  >Read More</Button>
+                <Button href={article.url}
+                variant='contained' size='small' color='warning'  >Read More</Button>
               </CardActions>
             </Card>
           </div>
+          
         )
       })
       
