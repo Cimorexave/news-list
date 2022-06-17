@@ -18,17 +18,24 @@ const apiToken = '8c522ab951da88162a3e3a27b39424ab'
 const App = () => {
   const [date, setDate] = useState("")
   const [keyword, setKeyword] = useState("")
-  const [url, setUrl] = useState("")
+  const [url, setUrl] = useState(`https://gnews.io/api/v4/top-headlines?&lang=en&token=${apiToken}`)
   const [items, setItems] = useState({articles: []})
   const [urlIsValid, setUrlIsValid] = useState(false)
 
+  const fetchData = async () =>{
+    console.log('fetching data...')
+    const response = await fetch(url)
+    if (response.ok) {
+      setItems(await response.json())
+    }
+  }
 
   useEffect(()=>{
     console.log('useeffect fired *')
     setDate(()=>{
       return new Date().toISOString().slice(0,10)
     })
-    setKeyword("Tech")
+    fetchData();
     console.log(date, keyword)
   },[])
   useEffect(()=>{
@@ -38,21 +45,16 @@ const App = () => {
         `https://gnews.io/api/v4/search?` + 
         `q=${keyword}&` +
         `from=${date}&` + 
+        `lang=en&` + 
         `token=${apiToken}`
       )
     })
     console.log(url)
-  }, [keyword,date])
+  }, [keyword])
 
   useEffect(()=>{
 
-    const fetchData = async () =>{
-      console.log('fetching data...')
-      const response = await fetch(url)
-      if (response.ok) {
-        setItems(await response.json())
-      }
-    }
+    
     if (keyword != "" && date != "" && url != "") setUrlIsValid(true)
     if (urlIsValid) {
       fetchData()
