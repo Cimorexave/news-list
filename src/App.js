@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
@@ -24,6 +24,8 @@ const App = () => {
   const [items, setItems] = useState({articles: []})
   const [urlIsValid, setUrlIsValid] = useState(false)
 
+  const fetchCount = useRef(0)
+
   const fetchData = async () =>{
     try {
       console.log('fetching data...')
@@ -48,6 +50,9 @@ const App = () => {
     })
     fetchData();
     console.log(date, keyword)
+    return ()=>{
+      localStorage.setItem('sessionFetchRequestCount', fetchCount.current.toString())
+    }
   },[])
   useEffect(()=>{
     console.log('change of keyword or date')
@@ -69,7 +74,8 @@ const App = () => {
     if (keyword != "" && date != "" && url != "") setUrlIsValid(true)
     if (urlIsValid) {
       fetchData()
-      console.log( items)
+      console.log('items: ', items)
+      fetchCount.current++
     }
   },[url])
 
