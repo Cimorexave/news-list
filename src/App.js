@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import './app.css';
 import Header from './components/Header';
 import '@fontsource/roboto/300.css';
@@ -13,6 +14,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { color } from '@mui/system';
 
 const apiToken = '8c522ab951da88162a3e3a27b39424ab'
 const App = () => {
@@ -103,6 +105,15 @@ const App = () => {
               <CardActions sx={{padding: 0}}>
                 <Button href={article.url}
                 variant='contained' size='small' color='warning'  >Read More</Button>
+                
+                <Button sx={{color: 'red' }} size='small' 
+                onClick={()=>{
+                  console.log('adding to favorites')
+                  localStorage.setItem(`favoriteArticle${Math.random()*100}`, article.url)
+                }}
+                >
+                  <FavoriteIcon fontSize='small'></FavoriteIcon>
+                </Button>
               </CardActions>
             </Card>
           </div>
