@@ -23,11 +23,19 @@ const App = () => {
   const [urlIsValid, setUrlIsValid] = useState(false)
 
   const fetchData = async () =>{
-    console.log('fetching data...')
+    try {
+      console.log('fetching data...')
     const response = await fetch(url)
     if (response.ok) {
       setItems(await response.json())
     }
+    } catch (error) {
+
+      console.log(`Error: ${error}`)
+      if (response.status === 403 ) 
+        alert('Error 403. Too many API requests. The server limits the number of requests made per day. Try again later')
+    }
+    
   }
 
   useEffect(()=>{
