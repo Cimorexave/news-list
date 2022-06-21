@@ -51,6 +51,7 @@ const App = () => {
     fetchData();
     console.log(date, keyword)
     return ()=>{
+      console.log('cleanup.')
       localStorage.setItem('sessionFetchRequestCount', fetchCount.current.toString())
     }
   },[])
