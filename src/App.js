@@ -29,11 +29,12 @@ const App = () => {
     if (response.ok) {
       setItems(await response.json())
     }
+    if (response.status === 403 ) 
+        alert('Error 403. Too many API requests. The server limits the number of requests made per day. Try again later')
+
     } catch (error) {
 
       console.log(`Error: ${error}`)
-      if (response.status === 403 ) 
-        alert('Error 403. Too many API requests. The server limits the number of requests made per day. Try again later')
     }
     
   }
